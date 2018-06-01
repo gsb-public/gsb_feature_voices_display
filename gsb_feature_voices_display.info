@@ -1,0 +1,12 @@
+name = GSB Feature Voices Display
+description = GSB Feature Voices Display module for various list view
+core = 7.x
+package = GSB
+version = 7.x-1.0
+dependencies[] = ctools
+dependencies[] = ds
+dependencies[] = views
+dependencies[] = views_content
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[views_view][] = gsb_voices_listing

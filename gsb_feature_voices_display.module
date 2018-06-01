@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the GSB Feature Voices Display feature.
+ */
+
+include_once 'gsb_feature_voices_display.features.inc';

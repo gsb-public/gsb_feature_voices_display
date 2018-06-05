@@ -564,7 +564,7 @@ function gsb_feature_voices_display_views_default_views() {
   /* Display: Voices Filters */
   $handler = $view->new_display('panel_pane', 'Voices Filters', 'voices_filters_pane');
   $handler->display->display_options['pane_title'] = 'Voices: Multiple Criteria + Filters';
-  $handler->display->display_options['pane_category']['name'] = 'Homepage Elements';
+  $handler->display->display_options['pane_category']['name'] = 'Customizable Content Lists';
   $handler->display->display_options['pane_category']['weight'] = '0';
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['set_view_mode'] = 0;
@@ -580,8 +580,8 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['exposed_form_overrides'] = array(
     'filters' => array(
       'field_person_type_tid' => '',
-      'field_industry_tid' => 'exposed',
-      'field_region_of_interest_tid' => 'exposed',
+      'field_industry_tid' => 'pane_and_exposed',
+      'field_region_of_interest_tid' => 'pane_and_exposed',
     ),
   );
   $export['voices_filters'] = $view;

@@ -172,7 +172,7 @@ function gsb_feature_voices_display_views_default_views() {
       'filter_rewrite_values' => NULL,
     ),
     'field_industry_tid' => array(
-      'bef_format' => 'bef',
+      'bef_format' => 'default',
       'more_options' => array(
         'bef_select_all_none' => FALSE,
         'bef_collapsible' => 0,
@@ -223,7 +223,7 @@ function gsb_feature_voices_display_views_default_views() {
       'filter_rewrite_values' => NULL,
     ),
     'field_region_of_interest_tid' => array(
-      'bef_format' => 'bef',
+      'bef_format' => 'default',
       'more_options' => array(
         'bef_select_all_none' => FALSE,
         'bef_collapsible' => 0,
@@ -316,6 +316,19 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['field_degree_year']['label'] = '';
   $handler->display->display_options['fields']['field_degree_year']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_degree_year']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Content: Full name */
+  $handler->display->display_options['fields']['field_full_name']['id'] = 'field_full_name';
+  $handler->display->display_options['fields']['field_full_name']['table'] = 'field_data_field_full_name';
+  $handler->display->display_options['fields']['field_full_name']['field'] = 'field_full_name';
+  $handler->display->display_options['fields']['field_full_name']['label'] = '';
+  $handler->display->display_options['fields']['field_full_name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_full_name']['settings'] = array(
     'conditions' => array(
       0 => array(
         'condition' => '',
@@ -580,8 +593,8 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['exposed_form_overrides'] = array(
     'filters' => array(
       'field_person_type_tid' => '',
-      'field_industry_tid' => 'pane_and_exposed',
-      'field_region_of_interest_tid' => 'pane_and_exposed',
+      'field_industry_tid' => 'configureable',
+      'field_region_of_interest_tid' => 'configureable',
     ),
   );
   $export['voices_filters'] = $view;

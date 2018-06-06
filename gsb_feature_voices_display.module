@@ -16,23 +16,21 @@ function gsb_feature_voices_display_form_views_content_views_panes_content_type_
     && $form_state['view']->current_display == 'voices_filters_pane') {
       $conf = $form_state['conf'];
 
-    $form['exposed']['filter-field_industry_tid']['expose_to_visitor']['#weight'] = -98;
-    $form['exposed']['filter-field_industry_tid']['expose_to_visitor']['#title'] = '<span class="hide_ind">Industry</span>';
-    $form['exposed']['filter-field_industry_tid']['field_industry_tid']['#weight'] = -87;
-    $form['exposed']['filter-field_industry_tid']['field_industry_tid']['#theme'] = 'select';
-    $form['exposed']['filter-field_industry_tid']['#title'] = t('Allow the user to filter by Industry');
+      $form['exposed']['filter-field_industry_tid']['expose_to_visitor']['#weight'] = -98;
+      $form['exposed']['filter-field_industry_tid']['expose_to_visitor']['#title'] = '<span class="hide_ind">Industry</span>';
+      $form['exposed']['filter-field_industry_tid']['field_industry_tid']['#weight'] = -87;
+      $form['exposed']['filter-field_industry_tid']['field_industry_tid']['#theme'] = 'select';
+      $form['exposed']['filter-field_industry_tid']['#title'] = t('Allow the user to filter by Industry');
 
-    $form['exposed']['filter-field_region_of_interest_tid']['expose_to_visitor']['#title'] = '<span class="hide_region">Region</span>';
-    $form['exposed']['filter-field_region_of_interest_tid']['expose_to_visitor']['#weight'] = -97;
-    $form['exposed']['filter-field_region_of_interest_tid']['field_region_of_interest_tid']['#theme'] = 'select';
-    $form['exposed']['filter-field_region_of_interest_tid']['#title'] = t('Allow the user to filter by Region');
-    $form['links']['#access'] = FALSE;
-    $form['comments']['#access'] = FALSE;
-    dpm($form);
-
+      $form['exposed']['filter-field_region_of_interest_tid']['expose_to_visitor']['#title'] = '<span class="hide_region">Region</span>';
+      $form['exposed']['filter-field_region_of_interest_tid']['expose_to_visitor']['#weight'] = -97;
+      $form['exposed']['filter-field_region_of_interest_tid']['field_region_of_interest_tid']['#theme'] = 'select';
+      $form['exposed']['filter-field_region_of_interest_tid']['#title'] = t('Allow the user to filter by Region');
+      $form['links']['#access'] = FALSE;
+      $form['comments']['#access'] = FALSE;
 
   //  drupal_add_js(array('gsb_feature_all_research_display' => array("topics" => $topics)), 'setting');
-  //  drupal_add_js(drupal_get_path('module', 'gsb_feature_all_research_display') . '/js/gsb_feature_all_research_display.js');
+      drupal_add_js(drupal_get_path('module', 'gsb_feature_voices_display') . '/js/gsb_feature_voices_display.js');
     //$form['#validate'][] = 'gsb_feature_all_research_display_pane_form_validate';
 
 

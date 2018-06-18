@@ -35,7 +35,7 @@ function gsb_feature_voices_display_form_views_content_views_panes_content_type_
       $form['#submit'][] = 'gsb_feature_voices_display_form_submit';
   }
   if ($form_state['view']->name == 'voices_filters'
-    && $form_state['pane']->subtype == 'voices_filters-panel_pane_1'  && $form_state['view']->current_display == 'panel_pane_1') {
+    && $form_state['pane']->subtype == 'voices_filters-voices_list_cta_panel_pane'  && $form_state['view']->current_display == 'voices_list_cta_panel_pane') {
      $conf = $form_state['conf'];
      $form['exposed']['filter-field_academic_area_single_tid']['#title'] = '<span class="hide-area-one">Academic Area</span>';
      $form['exposed']['filter-field_field_of_study_tid']['#title'] = '<span class="hide-area-two">Field of Study</span>';
@@ -57,10 +57,44 @@ function gsb_feature_voices_display_form_views_content_views_panes_content_type_
         '#weight' => 2,
         '#default_value' => !empty($conf['cta_url']) ? $conf['cta_url'] : '',
       );
-    $form['#validate'][] = 'gsb_feature_voices_display_form_validate';
-    $form['#submit'][] = 'gsb_feature_voices_display_form_submit';
-    drupal_add_js(drupal_get_path('module', 'gsb_feature_voices_display') . '/js/gsb_feature_voices_list_cta.js');  
-   
+      $form['#validate'][] = 'gsb_feature_voices_display_form_validate';
+      $form['#submit'][]   = 'gsb_feature_voices_display_form_submit';
+      drupal_add_js(drupal_get_path('module', 'gsb_feature_voices_display') . '/js/gsb_feature_voices_list_cta.js');  
+  
+  }
+  if ($form_state['view']->name == 'voices_filters'
+    && $form_state['pane']->subtype == 'voices_filters-all_voices_list_panel_pane'  && $form_state['view']->current_display == 'all_voices_list_panel_pane') {
+     $conf = $form_state['conf'];
+      $form['CTA'] = array(
+        '#type' => 'fieldset',
+        '#title' => t('CTA'),
+      );
+      $form['CTA']['cta_title'] = array(
+        '#title' => t('Text'),
+        '#type' => 'textfield',
+        '#description' => 'Enter an action statement.',
+        '#weight' => 1,
+        '#default_value' => !empty($conf['cta_title']) ? $conf['cta_title'] : '',
+      );
+      $form['CTA']['cta_url'] = array(
+        '#title' => t('URL'),
+        '#type' => 'textfield',
+        '#weight' => 2,
+        '#default_value' => !empty($conf['cta_url']) ? $conf['cta_url'] : '',
+      );
+      $form['override_title']['#weight'] = -100;
+       $form['overlay_color'] = array(
+        '#title' => t('Overlay color'),
+        '#type' => 'select',
+        '#options' => array('voices-bg-grey' => 'Grey' , 'voices-bg-white' => 'White'),
+        '#weight' => -98,
+        '#default_value' => !empty($conf['overlay_color']) ? $conf['overlay_color'] : '',
+      );
+      $form['exposed']['#weight'] = -95;
+      $form['comments']['#access'] = FALSE;
+      $form['links']['#access'] = FALSE;
+      $form['#validate'][] = 'gsb_feature_voices_display_form_validate';
+      $form['#submit'][]   = 'gsb_feature_voices_display_form_submit';
   }
 }
 
@@ -81,10 +115,18 @@ function gsb_feature_voices_display_form_validate(&$form, &$form_state) {
  *  - Save filter fields in pane config.
  */
 function gsb_feature_voices_display_form_submit($form, &$form_state) {
-  $form_state['conf']['filter_by_industry'] = $form_state['values']['filter_by_industry'];
-  $form_state['conf']['filter_by_region'] = $form_state['values']['filter_by_region'];
-  $form_state['conf']['cta_url'] = $form_state['values']['cta_url'];
-  $form_state['conf']['cta_title'] = $form_state['values']['cta_title'];
+
+  if($form_state['pane']->subtype == 'voices_filters-voices_filters_pane')
+  {
+    $form_state['conf']['filter_by_industry'] = $form_state['values']['filter_by_industry'];
+    $form_state['conf']['filter_by_region'] = $form_state['values']['filter_by_region'];
+  }
+  if ($form_state['subtype_name'] == 'voices_filters-voices_list_cta_panel_pane' || $form_state['subtype_name'] == 'voices_filters-all_voices_list_panel_pane') {
+    $form_state['conf']['cta_url'] = $form_state['values']['cta_url'];
+    $form_state['conf']['cta_title'] = $form_state['values']['cta_title'];
+  }
+  if($form_state['subtype_name'] == 'voices_filters-all_voices_list_panel_pane')
+  $form_state['conf']['overlay_color'] = $form_state['values']['overlay_color'];
 }
 
 /**
@@ -98,12 +140,26 @@ function gsb_feature_voices_display_form_views_exposed_form_alter(&$form, &$form
  * Implements hook_panels_pane_content_alter().
  *  - Alter News by Criteria content pane title to be linked to a custom URL.
  */
-function gsb_feature_voices_display_panels_pane_content_alter($content, $pane, $args, $context) {
-  if ($content && $content->subtype == 'voices_filters-panel_pane_1') {
-    if (!empty($pane->configuration['cta_title'])) {
-      $url_parts = drupal_parse_url($pane->configuration['cta_url']);
-      $url_parts['html'] = TRUE;
-      $content->content['#markup'] .= '<div class="voices_display_list_cta">' . l($pane->configuration['cta_title'], $url_parts['path'], $url_parts) . '</div>';
+function gsb_feature_voices_display_panels_pane_content_alter($content, $pane, $args, $context){
+    if ($content && $content->subtype == 'voices_filters-voices_list_cta_panel_pane') {
+      if (!empty($pane->configuration['cta_title'])) {
+        $url_parts = drupal_parse_url($pane->configuration['cta_url']);
+        $url_parts['html'] = TRUE;
+        $content->content['#markup'] .= '<div class="voices_display_list_cta">' . l($pane->configuration['cta_title'], $url_parts['path'], $url_parts) . '</div>';
+      }
     }
-  }
+    if($content && $content->subtype == 'voices_filters-all_voices_list_panel_pane')
+    {
+       $content->title_heading = 'div';
+       $content->title = '<h2>' . $content->title . '</h2>';
+       if (!empty($pane->configuration['cta_title'])) {
+          $url_parts = drupal_parse_url($pane->configuration['cta_url']);
+          $url_parts['html'] = TRUE;
+          $content->content['#markup'] .= '<div class="voices_display_all_list_cta">' . l($pane->configuration['cta_title'], $url_parts['path'], $url_parts) . '</div>';
+       }
+       if (!empty($pane->configuration['overlay_color'])) {
+         $content->css_class = $pane->configuration['overlay_color'];
+       }
+    
+    }
 }

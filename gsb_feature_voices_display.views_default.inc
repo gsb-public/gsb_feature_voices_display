@@ -582,7 +582,13 @@ function gsb_feature_voices_display_views_default_views() {
   );
 
   /* Display: Voices List with CTA */
-  $handler = $view->new_display('panel_pane', 'Voices List with CTA', 'panel_pane_1');
+  $handler = $view->new_display('panel_pane', 'Voices List with CTA', 'voices_list_cta_panel_pane');
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Entity Reference: Referenced Entity */
   $handler->display->display_options['relationships']['field_person_fac_single_ref_target_id']['id'] = 'field_person_fac_single_ref_target_id';
@@ -606,19 +612,12 @@ function gsb_feature_voices_display_views_default_views() {
       ),
     ),
   );
-  /* Field: Content: Full name */
-  $handler->display->display_options['fields']['field_full_name']['id'] = 'field_full_name';
-  $handler->display->display_options['fields']['field_full_name']['table'] = 'field_data_field_full_name';
-  $handler->display->display_options['fields']['field_full_name']['field'] = 'field_full_name';
-  $handler->display->display_options['fields']['field_full_name']['label'] = '';
-  $handler->display->display_options['fields']['field_full_name']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_full_name']['settings'] = array(
-    'conditions' => array(
-      0 => array(
-        'condition' => '',
-      ),
-    ),
-  );
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   /* Field: Faculty Name */
   $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
   $handler->display->display_options['fields']['title_1']['table'] = 'node';
@@ -640,14 +639,17 @@ function gsb_feature_voices_display_views_default_views() {
       ),
     ),
   );
-  /* Field: Background Color */
-  $handler->display->display_options['fields']['field_slideshow_style']['id'] = 'field_slideshow_style';
-  $handler->display->display_options['fields']['field_slideshow_style']['table'] = 'field_data_field_slideshow_style';
-  $handler->display->display_options['fields']['field_slideshow_style']['field'] = 'field_slideshow_style';
-  $handler->display->display_options['fields']['field_slideshow_style']['ui_name'] = 'Background Color';
-  $handler->display->display_options['fields']['field_slideshow_style']['label'] = '';
-  $handler->display->display_options['fields']['field_slideshow_style']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_slideshow_style']['settings'] = array(
+  /* Field: Faculty Endowed Title */
+  $handler->display->display_options['fields']['field_endowed_title_appointment']['id'] = 'field_endowed_title_appointment';
+  $handler->display->display_options['fields']['field_endowed_title_appointment']['table'] = 'field_data_field_endowed_title_appointment';
+  $handler->display->display_options['fields']['field_endowed_title_appointment']['field'] = 'field_endowed_title_appointment';
+  $handler->display->display_options['fields']['field_endowed_title_appointment']['relationship'] = 'field_person_fac_single_ref_target_id';
+  $handler->display->display_options['fields']['field_endowed_title_appointment']['ui_name'] = 'Faculty Endowed Title';
+  $handler->display->display_options['fields']['field_endowed_title_appointment']['label'] = '';
+  $handler->display->display_options['fields']['field_endowed_title_appointment']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_endowed_title_appointment']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_endowed_title_appointment']['type'] = 'link_title_plain';
+  $handler->display->display_options['fields']['field_endowed_title_appointment']['settings'] = array(
     'conditions' => array(
       0 => array(
         'condition' => '',
@@ -663,6 +665,20 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['field_quote']['alter']['trim'] = TRUE;
   $handler->display->display_options['fields']['field_quote']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_quote']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Background Color */
+  $handler->display->display_options['fields']['field_slideshow_style']['id'] = 'field_slideshow_style';
+  $handler->display->display_options['fields']['field_slideshow_style']['table'] = 'field_data_field_slideshow_style';
+  $handler->display->display_options['fields']['field_slideshow_style']['field'] = 'field_slideshow_style';
+  $handler->display->display_options['fields']['field_slideshow_style']['ui_name'] = 'Background Color';
+  $handler->display->display_options['fields']['field_slideshow_style']['label'] = '';
+  $handler->display->display_options['fields']['field_slideshow_style']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_slideshow_style']['settings'] = array(
     'conditions' => array(
       0 => array(
         'condition' => '',
@@ -1112,6 +1128,225 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['exposed_form_overrides'] = array(
     'filters' => array(
       'field_person_type_tid' => '',
+    ),
+  );
+
+  /* Display: Voices All List with CTA */
+  $handler = $view->new_display('panel_pane', 'Voices All List with CTA', 'all_voices_list_panel_pane');
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '4';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_person_fac_single_ref_target_id']['id'] = 'field_person_fac_single_ref_target_id';
+  $handler->display->display_options['relationships']['field_person_fac_single_ref_target_id']['table'] = 'field_data_field_person_fac_single_ref';
+  $handler->display->display_options['relationships']['field_person_fac_single_ref_target_id']['field'] = 'field_person_fac_single_ref_target_id';
+  $handler->display->display_options['relationships']['field_person_fac_single_ref_target_id']['label'] = 'faculty relation';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Field: Photo */
+  $handler->display->display_options['fields']['field_image_single_public']['id'] = 'field_image_single_public';
+  $handler->display->display_options['fields']['field_image_single_public']['table'] = 'field_data_field_image_single_public';
+  $handler->display->display_options['fields']['field_image_single_public']['field'] = 'field_image_single_public';
+  $handler->display->display_options['fields']['field_image_single_public']['label'] = '';
+  $handler->display->display_options['fields']['field_image_single_public']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_image_single_public']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_image_single_public']['settings'] = array(
+    'image_style' => '270x270',
+    'image_link' => '',
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: Faculty Name */
+  $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
+  $handler->display->display_options['fields']['title_1']['table'] = 'node';
+  $handler->display->display_options['fields']['title_1']['field'] = 'title';
+  $handler->display->display_options['fields']['title_1']['relationship'] = 'field_person_fac_single_ref_target_id';
+  $handler->display->display_options['fields']['title_1']['ui_name'] = 'Faculty Name';
+  $handler->display->display_options['fields']['title_1']['label'] = '';
+  $handler->display->display_options['fields']['title_1']['element_label_colon'] = FALSE;
+  /* Field: Content: Degree & Year */
+  $handler->display->display_options['fields']['field_degree_year']['id'] = 'field_degree_year';
+  $handler->display->display_options['fields']['field_degree_year']['table'] = 'field_data_field_degree_year';
+  $handler->display->display_options['fields']['field_degree_year']['field'] = 'field_degree_year';
+  $handler->display->display_options['fields']['field_degree_year']['label'] = '';
+  $handler->display->display_options['fields']['field_degree_year']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_degree_year']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Faculty Endowed Title */
+  $handler->display->display_options['fields']['field_endowed_title_appointment']['id'] = 'field_endowed_title_appointment';
+  $handler->display->display_options['fields']['field_endowed_title_appointment']['table'] = 'field_data_field_endowed_title_appointment';
+  $handler->display->display_options['fields']['field_endowed_title_appointment']['field'] = 'field_endowed_title_appointment';
+  $handler->display->display_options['fields']['field_endowed_title_appointment']['relationship'] = 'field_person_fac_single_ref_target_id';
+  $handler->display->display_options['fields']['field_endowed_title_appointment']['ui_name'] = 'Faculty Endowed Title';
+  $handler->display->display_options['fields']['field_endowed_title_appointment']['label'] = '';
+  $handler->display->display_options['fields']['field_endowed_title_appointment']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_endowed_title_appointment']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_endowed_title_appointment']['type'] = 'link_title_plain';
+  $handler->display->display_options['fields']['field_endowed_title_appointment']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Content: Quote */
+  $handler->display->display_options['fields']['field_quote']['id'] = 'field_quote';
+  $handler->display->display_options['fields']['field_quote']['table'] = 'field_data_field_quote';
+  $handler->display->display_options['fields']['field_quote']['field'] = 'field_quote';
+  $handler->display->display_options['fields']['field_quote']['label'] = '';
+  $handler->display->display_options['fields']['field_quote']['alter']['max_length'] = '300';
+  $handler->display->display_options['fields']['field_quote']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['field_quote']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_quote']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Background Color */
+  $handler->display->display_options['fields']['field_slideshow_style']['id'] = 'field_slideshow_style';
+  $handler->display->display_options['fields']['field_slideshow_style']['table'] = 'field_data_field_slideshow_style';
+  $handler->display->display_options['fields']['field_slideshow_style']['field'] = 'field_slideshow_style';
+  $handler->display->display_options['fields']['field_slideshow_style']['ui_name'] = 'Background Color';
+  $handler->display->display_options['fields']['field_slideshow_style']['label'] = '';
+  $handler->display->display_options['fields']['field_slideshow_style']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_slideshow_style']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'voices' => 'voices',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Person Type (field_person_type) */
+  $handler->display->display_options['filters']['field_person_type_tid']['id'] = 'field_person_type_tid';
+  $handler->display->display_options['filters']['field_person_type_tid']['table'] = 'field_data_field_person_type';
+  $handler->display->display_options['filters']['field_person_type_tid']['field'] = 'field_person_type_tid';
+  $handler->display->display_options['filters']['field_person_type_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_person_type_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_person_type_tid']['expose']['operator_id'] = 'field_person_type_tid_op';
+  $handler->display->display_options['filters']['field_person_type_tid']['expose']['label'] = 'Type of Voice';
+  $handler->display->display_options['filters']['field_person_type_tid']['expose']['operator'] = 'field_person_type_tid_op';
+  $handler->display->display_options['filters']['field_person_type_tid']['expose']['identifier'] = 'field_person_type_tid';
+  $handler->display->display_options['filters']['field_person_type_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    11 => 0,
+    71 => 0,
+    216 => 0,
+    31 => 0,
+    21 => 0,
+    151 => 0,
+    241 => 0,
+    61 => 0,
+    56 => 0,
+    66 => 0,
+    16 => 0,
+    171 => 0,
+    256 => 0,
+    326 => 0,
+    201 => 0,
+    221 => 0,
+    146 => 0,
+    246 => 0,
+    226 => 0,
+    36 => 0,
+    231 => 0,
+    41 => 0,
+    236 => 0,
+    91 => 0,
+    26 => 0,
+    136 => 0,
+    86 => 0,
+    96 => 0,
+    81 => 0,
+    106 => 0,
+    116 => 0,
+    51 => 0,
+    46 => 0,
+    121 => 0,
+    126 => 0,
+    131 => 0,
+    141 => 0,
+    156 => 0,
+    161 => 0,
+    166 => 0,
+    176 => 0,
+    181 => 0,
+    186 => 0,
+    191 => 0,
+    206 => 0,
+    211 => 0,
+    251 => 0,
+    261 => 0,
+    266 => 0,
+    271 => 0,
+    276 => 0,
+    281 => 0,
+    291 => 0,
+    296 => 0,
+    301 => 0,
+    101 => 0,
+  );
+  $handler->display->display_options['filters']['field_person_type_tid']['reduce_duplicates'] = TRUE;
+  $handler->display->display_options['filters']['field_person_type_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_person_type_tid']['vocabulary'] = 'person_type';
+  $handler->display->display_options['filters']['field_person_type_tid']['error_message'] = FALSE;
+  $handler->display->display_options['pane_title'] = 'Voices: Single Criteria with CTA';
+  $handler->display->display_options['pane_category']['name'] = 'Customizable Content Lists';
+  $handler->display->display_options['pane_category']['weight'] = '0';
+  $handler->display->display_options['allow']['use_pager'] = 0;
+  $handler->display->display_options['allow']['set_view_mode'] = 0;
+  $handler->display->display_options['allow']['set_style_plugin'] = 0;
+  $handler->display->display_options['allow']['items_per_page'] = 0;
+  $handler->display->display_options['allow']['offset'] = 0;
+  $handler->display->display_options['allow']['link_to_view'] = 0;
+  $handler->display->display_options['allow']['more_link'] = 0;
+  $handler->display->display_options['allow']['path_override'] = 0;
+  $handler->display->display_options['allow']['title_override'] = 'title_override';
+  $handler->display->display_options['allow']['exposed_form'] = 'exposed_form';
+  $handler->display->display_options['allow']['fields_override'] = 0;
+  $handler->display->display_options['exposed_form_overrides'] = array(
+    'filters' => array(
+      'field_person_type_tid' => '',
+      'field_centers_research_programs_tid' => '',
+      'field_tag_tid' => '',
+      'field_academic_area_single_tid' => '',
+      'field_field_of_study_tid' => '',
     ),
   );
   $export['voices_filters'] = $view;

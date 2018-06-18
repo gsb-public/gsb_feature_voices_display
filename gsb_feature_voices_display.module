@@ -34,6 +34,7 @@ function gsb_feature_voices_display_form_views_content_views_panes_content_type_
       $form['#validate'][] = 'gsb_feature_voices_display_form_validate';
       $form['#submit'][] = 'gsb_feature_voices_display_form_submit';
   }
+
   if ($form_state['view']->name == 'voices_filters'
     && $form_state['pane']->subtype == 'voices_filters-panel_pane_1'  && $form_state['view']->current_display == 'panel_pane_1') {
      $conf = $form_state['conf'];
@@ -74,6 +75,10 @@ function gsb_feature_voices_display_form_validate(&$form, &$form_state) {
   if ($form_state['values']['cta_title'] == '' && $form_state['values']['cta_url'] != '') {
     form_set_error('cta_title', t('CTA title is required.'));
   }
+
+  if ($form_state['values']['exposed']['filter-field_industry_tid']['expose_to_visitor'] == 1) {
+      unset($form_state['values']['exposed']['field_industry_tid']);
+  }
 }
 
 /**
@@ -91,7 +96,75 @@ function gsb_feature_voices_display_form_submit($form, &$form_state) {
   * Implements hook_form_FORM_ID_alter().
   */
 function gsb_feature_voices_display_form_views_exposed_form_alter(&$form, &$form_state) {
-  
+  if ($form['#id'] == 'views-exposed-form-voices-filters-voices-filters-pane') {
+    /*
+    $form['field_industry_tid']['#attributes']['class'][] = 'ctools-auto-submit-exclude';
+    //$form['#action'] = '';
+    if (isset($form_state['input']['field_centers_research_programs_tid'])) {
+      $options = array();
+      $filter_on = FALSE;
+      $center_id = $form_state['input']['field_centers_research_programs_tid'];
+      $center = $form['field_centers_research_programs_tid']['#options'][$center_id];
+      foreach ($form['field_region_of_interest_tid']['#options'] as $filter_info) {
+        foreach ($filter_info->option as $key => $name) {
+          if ($filter_on) {
+            if (substr($name, 0, 1) == '-') {
+              $filter_info->option[$key] = substr($name, 1);
+              $options[] = $filter_info;
+            }
+            else {
+              break(2);
+            }
+          }
+          if ($name == $center) {
+            $filter_on = TRUE;
+          }
+        }
+      }
+      $form['field_region_of_interest_tid']['#options'] = $options;
+    }
+    //$display_pub = (!empty($form_state['input']['filter-field_industry_tid'])) ? $form_state['input']['filter-field_industry_tid']['expose_to_visitor'] : '';
+    $display_topic = (!empty($form_state['input']['filter-field_region_of_interest_tid'])) ? $form_state['input']['filter-field_region_of_interest_tid']['expose_to_visitor'] : '';
+
+    $fieldset = array();
+    $done_button_css = false;
+    if ($display_pub || $display_topic) {
+      $fieldset = array(
+        '#title' => t('Narrow your results'),
+        '#type' => 'fieldset',
+        '#weight' => 100,
+        '#collapsible' => TRUE,
+        '#collapsed' => (empty($form_state['input']['field_industry_tid']) && empty($form_state['input']['field_region_of_interest_tid'])) ? TRUE : FALSE,
+      );
+      $done_button_css = true;
+    }
+
+    if ($display_pub) {
+      $fieldset['field_industry_tid'] = $form['field_industry_tid'];
+      $fieldset['field_industry_tid']['#title'] = t('Industry');
+      $form['field_industry_tid'] = FALSE;
+      unset($form['#info']['filter-field_industry_tid']);
+    }
+    if ($display_topic) {
+      if (!empty($options)) {
+        $fieldset['field_region_of_interest_tid'] = $form['field_region_of_interest_tid'];
+        $fieldset['field_region_of_interest_tid']['#title'] = t('Research Focus Areas');
+      }
+      $form['field_region_of_interest_tid'] = FALSE;
+      unset($form['#info']['filter-field_region_of_interest_tid']);
+    }
+
+    $new_form = array();
+    foreach ($form as $key => $value) {
+      $new_form[$key] = $value;
+      if ($key == 'field_tag_tid') {
+        $new_form['narrow_search'] = $fieldset;
+      }
+    }
+    $form = $new_form;
+    drupal_add_js(drupal_get_path('module', 'gsb_feature_all_research_display') . '/js/gsb_align_exposed_markup.js');
+    */
+  }
 }
 
 /**

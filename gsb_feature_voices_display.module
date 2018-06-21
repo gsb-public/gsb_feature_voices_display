@@ -15,21 +15,18 @@ function gsb_feature_voices_display_form_views_content_views_panes_content_type_
   if ($form_state['pane']->subtype == 'voices_filters-voices_filters_pane' && $form_state['view']->name == 'voices_filters'
     && $form_state['view']->current_display == 'voices_filters_pane') {
       $conf = $form_state['conf'];
-
-      $form['exposed']['filter-field_industry_tid']['expose_to_visitor']['#weight'] = -98;
-      $form['exposed']['filter-field_industry_tid']['expose_to_visitor']['#title'] = '<span class="hide_ind">Industry</span>';
-      $form['exposed']['filter-field_industry_tid']['field_industry_tid']['#weight'] = -87;
-      $form['exposed']['filter-field_industry_tid']['field_industry_tid']['#theme'] = 'select';
-      $form['exposed']['filter-field_industry_tid']['#title'] = t('Allow the user to filter by Industry');
-
-      $form['exposed']['filter-field_region_of_interest_tid']['expose_to_visitor']['#title'] = '<span class="hide_region">Region</span>';
-      $form['exposed']['filter-field_region_of_interest_tid']['expose_to_visitor']['#weight'] = -97;
-      $form['exposed']['filter-field_region_of_interest_tid']['field_region_of_interest_tid']['#theme'] = 'select';
-      $form['exposed']['filter-field_region_of_interest_tid']['#title'] = t('Allow the user to filter by Region');
-      $form['links']['#access'] = FALSE;
-      $form['comments']['#access'] = FALSE;
-
-      drupal_add_js(drupal_get_path('module', 'gsb_feature_voices_display') . '/js/gsb_feature_voices_display.js');
+      $form['exposed']['filter_by_industry'] = array(
+        '#title' => t('Allow the user to filter by Industry'),
+        '#type' => 'checkbox',
+        '#weight' => -99,
+        '#default_value' => !empty($conf['filter_by_industry']) ? $conf['filter_by_industry'] : '',
+      );
+      $form['exposed']['filter_by_region'] = array(
+        '#title' => t('Allow the user to filter by Region'),
+        '#type' => 'checkbox',
+        '#weight' => -98,
+        '#default_value' => !empty($conf['filter_by_region']) ? $conf['filter_by_region'] : '',
+      );
 
       $form['#validate'][] = 'gsb_feature_voices_display_form_validate';
       $form['#submit'][] = 'gsb_feature_voices_display_form_submit';
@@ -109,10 +106,6 @@ function gsb_feature_voices_display_form_validate(&$form, &$form_state) {
   if ($form_state['values']['cta_title'] == '' && $form_state['values']['cta_url'] != '') {
     form_set_error('cta_title', t('CTA title is required.'));
   }
-
-  if ($form_state['values']['exposed']['filter-field_industry_tid']['expose_to_visitor'] == 1) {
-      unset($form_state['values']['exposed']['field_industry_tid']);
-  }
 }
 
 /**
@@ -129,6 +122,12 @@ function gsb_feature_voices_display_form_submit($form, &$form_state) {
     $form_state['conf']['cta_url'] = $form_state['values']['cta_url'];
     $form_state['conf']['cta_title'] = $form_state['values']['cta_title'];
   }
+  // Save the filter in pane config for voices filters pane display
+  if ($form_state['pane']->subtype == 'voices_filters-voices_filters_pane')
+  {
+    $form_state['conf']['filter_by_industry'] = $form_state['values']['exposed']['filter_by_industry'];
+    $form_state['conf']['filter_by_region'] = $form_state['values']['exposed']['filter_by_region'];
+  }
 }
 
 /**
@@ -136,73 +135,24 @@ function gsb_feature_voices_display_form_submit($form, &$form_state) {
   */
 function gsb_feature_voices_display_form_views_exposed_form_alter(&$form, &$form_state) {
   if ($form['#id'] == 'views-exposed-form-voices-filters-voices-filters-pane') {
-    /*
-    $form['field_industry_tid']['#attributes']['class'][] = 'ctools-auto-submit-exclude';
-    //$form['#action'] = '';
-    if (isset($form_state['input']['field_centers_research_programs_tid'])) {
-      $options = array();
-      $filter_on = FALSE;
-      $center_id = $form_state['input']['field_centers_research_programs_tid'];
-      $center = $form['field_centers_research_programs_tid']['#options'][$center_id];
-      foreach ($form['field_region_of_interest_tid']['#options'] as $filter_info) {
-        foreach ($filter_info->option as $key => $name) {
-          if ($filter_on) {
-            if (substr($name, 0, 1) == '-') {
-              $filter_info->option[$key] = substr($name, 1);
-              $options[] = $filter_info;
-            }
-            else {
-              break(2);
-            }
-          }
-          if ($name == $center) {
-            $filter_on = TRUE;
-          }
-        }
-      }
-      $form['field_region_of_interest_tid']['#options'] = $options;
+    // Save the pane values in hidden form, since they are lost in ajax call
+    $form['filter_by_industry'] = array(
+      '#type' => 'hidden',
+      '#default_value' => $form_state['input']['filter_by_industry'],
+    );
+    $form['filter_by_region'] = array(
+      '#type' => 'hidden',
+      '#default_value' => $form_state['input']['filter_by_region'],
+    );
+    // Hide the filter display on pane config
+    if (isset($form_state['input']['filter_by_industry']) && ($form_state['input']['filter_by_industry'] == "" 
+      || $form_state['input']['filter_by_industry'] == "0")) {
+      $form['field_industry_tid']['#access'] = FALSE;
     }
-    //$display_pub = (!empty($form_state['input']['filter-field_industry_tid'])) ? $form_state['input']['filter-field_industry_tid']['expose_to_visitor'] : '';
-    $display_topic = (!empty($form_state['input']['filter-field_region_of_interest_tid'])) ? $form_state['input']['filter-field_region_of_interest_tid']['expose_to_visitor'] : '';
-
-    $fieldset = array();
-    $done_button_css = false;
-    if ($display_pub || $display_topic) {
-      $fieldset = array(
-        '#title' => t('Narrow your results'),
-        '#type' => 'fieldset',
-        '#weight' => 100,
-        '#collapsible' => TRUE,
-        '#collapsed' => (empty($form_state['input']['field_industry_tid']) && empty($form_state['input']['field_region_of_interest_tid'])) ? TRUE : FALSE,
-      );
-      $done_button_css = true;
+    if (isset($form_state['input']['filter_by_region']) && ($form_state['input']['filter_by_region'] == "" 
+      || $form_state['input']['filter_by_region'] == "0")) {
+      $form['field_region_of_interest_tid']['#access'] = FALSE;
     }
-
-    if ($display_pub) {
-      $fieldset['field_industry_tid'] = $form['field_industry_tid'];
-      $fieldset['field_industry_tid']['#title'] = t('Industry');
-      $form['field_industry_tid'] = FALSE;
-      unset($form['#info']['filter-field_industry_tid']);
-    }
-    if ($display_topic) {
-      if (!empty($options)) {
-        $fieldset['field_region_of_interest_tid'] = $form['field_region_of_interest_tid'];
-        $fieldset['field_region_of_interest_tid']['#title'] = t('Research Focus Areas');
-      }
-      $form['field_region_of_interest_tid'] = FALSE;
-      unset($form['#info']['filter-field_region_of_interest_tid']);
-    }
-
-    $new_form = array();
-    foreach ($form as $key => $value) {
-      $new_form[$key] = $value;
-      if ($key == 'field_tag_tid') {
-        $new_form['narrow_search'] = $fieldset;
-      }
-    }
-    $form = $new_form;
-    drupal_add_js(drupal_get_path('module', 'gsb_feature_all_research_display') . '/js/gsb_align_exposed_markup.js');
-    */
   }
 }
 
@@ -230,6 +180,5 @@ function gsb_feature_voices_display_panels_pane_content_alter($content, $pane, $
        /*if (!empty($pane->configuration['overlay_color'])) {
          $content->css_class = $pane->configuration['overlay_color'];
        }*/
-    
     }
 }

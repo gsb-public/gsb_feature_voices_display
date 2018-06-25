@@ -182,3 +182,15 @@ function gsb_feature_voices_display_panels_pane_content_alter($content, $pane, $
        }*/
     }
 }
+
+function gsb_feature_voices_display_views_pre_render(&$view) {
+  if ($view->current_display == 'all_voices_list_panel_pane' || $view->current_display == 'voices_list_cta_panel_pane' || $view->current_display == 'voices_filters_pane' || $view->current_display == 'voices_single_teaser_pane' ) {
+    foreach($view->result as $row)
+    {
+      
+       $row->field_field_slideshow_style[0]['rendered']['#markup'] = '<div class="text-content '.$row->field_field_slideshow_style[0]['raw']['value'].'"></div>';
+    }
+    //$view->result[0]->field_field_slideshow_style[0]['#suffix'] = '</div>';
+  }
+
+}

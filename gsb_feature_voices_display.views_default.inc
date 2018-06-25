@@ -755,6 +755,7 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['field_slideshow_style']['field'] = 'field_slideshow_style';
   $handler->display->display_options['fields']['field_slideshow_style']['ui_name'] = 'Background Color';
   $handler->display->display_options['fields']['field_slideshow_style']['label'] = '';
+  $handler->display->display_options['fields']['field_slideshow_style']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_slideshow_style']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_slideshow_style']['settings'] = array(
     'conditions' => array(
@@ -1116,6 +1117,7 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['field_slideshow_style']['field'] = 'field_slideshow_style';
   $handler->display->display_options['fields']['field_slideshow_style']['ui_name'] = 'Background Color';
   $handler->display->display_options['fields']['field_slideshow_style']['label'] = '';
+  $handler->display->display_options['fields']['field_slideshow_style']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_slideshow_style']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_slideshow_style']['settings'] = array(
     'conditions' => array(
@@ -1629,6 +1631,7 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['field_slideshow_style']['field'] = 'field_slideshow_style';
   $handler->display->display_options['fields']['field_slideshow_style']['ui_name'] = 'Background Color';
   $handler->display->display_options['fields']['field_slideshow_style']['label'] = '';
+  $handler->display->display_options['fields']['field_slideshow_style']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_slideshow_style']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_slideshow_style']['settings'] = array(
     'conditions' => array(
@@ -1753,6 +1756,7 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['field_slideshow_style']['field'] = 'field_slideshow_style';
   $handler->display->display_options['fields']['field_slideshow_style']['ui_name'] = 'Background Color';
   $handler->display->display_options['fields']['field_slideshow_style']['label'] = '';
+  $handler->display->display_options['fields']['field_slideshow_style']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_slideshow_style']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_slideshow_style']['settings'] = array(
     'conditions' => array(

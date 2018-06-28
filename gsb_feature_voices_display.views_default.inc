@@ -312,6 +312,20 @@ function gsb_feature_voices_display_views_default_views() {
       ),
     ),
   );
+  /* Field: Content: Quote */
+  $handler->display->display_options['fields']['field_quote']['id'] = 'field_quote';
+  $handler->display->display_options['fields']['field_quote']['table'] = 'field_data_field_quote';
+  $handler->display->display_options['fields']['field_quote']['field'] = 'field_quote';
+  $handler->display->display_options['fields']['field_quote']['label'] = '';
+  $handler->display->display_options['fields']['field_quote']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_quote']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_quote']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -349,20 +363,6 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['field_endowed_title_appointment']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_endowed_title_appointment']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['settings'] = array(
-    'conditions' => array(
-      0 => array(
-        'condition' => '',
-      ),
-    ),
-  );
-  /* Field: Content: Quote */
-  $handler->display->display_options['fields']['field_quote']['id'] = 'field_quote';
-  $handler->display->display_options['fields']['field_quote']['table'] = 'field_data_field_quote';
-  $handler->display->display_options['fields']['field_quote']['field'] = 'field_quote';
-  $handler->display->display_options['fields']['field_quote']['label'] = '';
-  $handler->display->display_options['fields']['field_quote']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_quote']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_quote']['settings'] = array(
     'conditions' => array(
       0 => array(
         'condition' => '',
@@ -691,6 +691,19 @@ function gsb_feature_voices_display_views_default_views() {
       ),
     ),
   );
+  /* Field: Content: Quote */
+  $handler->display->display_options['fields']['field_quote']['id'] = 'field_quote';
+  $handler->display->display_options['fields']['field_quote']['table'] = 'field_data_field_quote';
+  $handler->display->display_options['fields']['field_quote']['field'] = 'field_quote';
+  $handler->display->display_options['fields']['field_quote']['label'] = '';
+  $handler->display->display_options['fields']['field_quote']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_quote']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -730,19 +743,6 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['field_endowed_title_appointment']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['type'] = 'link_title_plain';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['settings'] = array(
-    'conditions' => array(
-      0 => array(
-        'condition' => '',
-      ),
-    ),
-  );
-  /* Field: Content: Quote */
-  $handler->display->display_options['fields']['field_quote']['id'] = 'field_quote';
-  $handler->display->display_options['fields']['field_quote']['table'] = 'field_data_field_quote';
-  $handler->display->display_options['fields']['field_quote']['field'] = 'field_quote';
-  $handler->display->display_options['fields']['field_quote']['label'] = '';
-  $handler->display->display_options['fields']['field_quote']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_quote']['settings'] = array(
     'conditions' => array(
       0 => array(
         'condition' => '',
@@ -1052,6 +1052,21 @@ function gsb_feature_voices_display_views_default_views() {
       ),
     ),
   );
+  /* Field: Content: Quote */
+  $handler->display->display_options['fields']['field_quote']['id'] = 'field_quote';
+  $handler->display->display_options['fields']['field_quote']['table'] = 'field_data_field_quote';
+  $handler->display->display_options['fields']['field_quote']['field'] = 'field_quote';
+  $handler->display->display_options['fields']['field_quote']['label'] = '';
+  $handler->display->display_options['fields']['field_quote']['alter']['max_length'] = '300';
+  $handler->display->display_options['fields']['field_quote']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['field_quote']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_quote']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -1090,21 +1105,6 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['field_endowed_title_appointment']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['type'] = 'link_title_plain';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['settings'] = array(
-    'conditions' => array(
-      0 => array(
-        'condition' => '',
-      ),
-    ),
-  );
-  /* Field: Content: Quote */
-  $handler->display->display_options['fields']['field_quote']['id'] = 'field_quote';
-  $handler->display->display_options['fields']['field_quote']['table'] = 'field_data_field_quote';
-  $handler->display->display_options['fields']['field_quote']['field'] = 'field_quote';
-  $handler->display->display_options['fields']['field_quote']['label'] = '';
-  $handler->display->display_options['fields']['field_quote']['alter']['max_length'] = '300';
-  $handler->display->display_options['fields']['field_quote']['alter']['trim'] = TRUE;
-  $handler->display->display_options['fields']['field_quote']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_quote']['settings'] = array(
     'conditions' => array(
       0 => array(
         'condition' => '',
@@ -1569,6 +1569,19 @@ function gsb_feature_voices_display_views_default_views() {
       ),
     ),
   );
+  /* Field: Content: Quote */
+  $handler->display->display_options['fields']['field_quote']['id'] = 'field_quote';
+  $handler->display->display_options['fields']['field_quote']['table'] = 'field_data_field_quote';
+  $handler->display->display_options['fields']['field_quote']['field'] = 'field_quote';
+  $handler->display->display_options['fields']['field_quote']['label'] = '';
+  $handler->display->display_options['fields']['field_quote']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_quote']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -1606,19 +1619,6 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['field_endowed_title_appointment']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_endowed_title_appointment']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['settings'] = array(
-    'conditions' => array(
-      0 => array(
-        'condition' => '',
-      ),
-    ),
-  );
-  /* Field: Content: Quote */
-  $handler->display->display_options['fields']['field_quote']['id'] = 'field_quote';
-  $handler->display->display_options['fields']['field_quote']['table'] = 'field_data_field_quote';
-  $handler->display->display_options['fields']['field_quote']['field'] = 'field_quote';
-  $handler->display->display_options['fields']['field_quote']['label'] = '';
-  $handler->display->display_options['fields']['field_quote']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_quote']['settings'] = array(
     'conditions' => array(
       0 => array(
         'condition' => '',
@@ -1691,6 +1691,21 @@ function gsb_feature_voices_display_views_default_views() {
       ),
     ),
   );
+  /* Field: Content: Quote */
+  $handler->display->display_options['fields']['field_quote']['id'] = 'field_quote';
+  $handler->display->display_options['fields']['field_quote']['table'] = 'field_data_field_quote';
+  $handler->display->display_options['fields']['field_quote']['field'] = 'field_quote';
+  $handler->display->display_options['fields']['field_quote']['label'] = '';
+  $handler->display->display_options['fields']['field_quote']['alter']['max_length'] = '300';
+  $handler->display->display_options['fields']['field_quote']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['field_quote']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_quote']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -1729,21 +1744,6 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['field_endowed_title_appointment']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['type'] = 'link_title_plain';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['settings'] = array(
-    'conditions' => array(
-      0 => array(
-        'condition' => '',
-      ),
-    ),
-  );
-  /* Field: Content: Quote */
-  $handler->display->display_options['fields']['field_quote']['id'] = 'field_quote';
-  $handler->display->display_options['fields']['field_quote']['table'] = 'field_data_field_quote';
-  $handler->display->display_options['fields']['field_quote']['field'] = 'field_quote';
-  $handler->display->display_options['fields']['field_quote']['label'] = '';
-  $handler->display->display_options['fields']['field_quote']['alter']['max_length'] = '300';
-  $handler->display->display_options['fields']['field_quote']['alter']['trim'] = TRUE;
-  $handler->display->display_options['fields']['field_quote']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_quote']['settings'] = array(
     'conditions' => array(
       0 => array(
         'condition' => '',

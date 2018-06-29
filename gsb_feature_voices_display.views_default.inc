@@ -712,14 +712,6 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Field: Faculty Name */
-  $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
-  $handler->display->display_options['fields']['title_1']['table'] = 'node';
-  $handler->display->display_options['fields']['title_1']['field'] = 'title';
-  $handler->display->display_options['fields']['title_1']['relationship'] = 'field_person_fac_single_ref_target_id';
-  $handler->display->display_options['fields']['title_1']['ui_name'] = 'Faculty Name';
-  $handler->display->display_options['fields']['title_1']['label'] = '';
-  $handler->display->display_options['fields']['title_1']['element_label_colon'] = FALSE;
   /* Field: Content: Degree & Year */
   $handler->display->display_options['fields']['field_degree_year']['id'] = 'field_degree_year';
   $handler->display->display_options['fields']['field_degree_year']['table'] = 'field_data_field_degree_year';
@@ -1073,14 +1065,6 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Field: Faculty Name */
-  $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
-  $handler->display->display_options['fields']['title_1']['table'] = 'node';
-  $handler->display->display_options['fields']['title_1']['field'] = 'title';
-  $handler->display->display_options['fields']['title_1']['relationship'] = 'field_person_fac_single_ref_target_id';
-  $handler->display->display_options['fields']['title_1']['ui_name'] = 'Faculty Name';
-  $handler->display->display_options['fields']['title_1']['label'] = '';
-  $handler->display->display_options['fields']['title_1']['element_label_colon'] = FALSE;
   /* Field: Content: Degree & Year */
   $handler->display->display_options['fields']['field_degree_year']['id'] = 'field_degree_year';
   $handler->display->display_options['fields']['field_degree_year']['table'] = 'field_data_field_degree_year';
@@ -1589,14 +1573,6 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Faculty Name */
-  $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
-  $handler->display->display_options['fields']['title_1']['table'] = 'node';
-  $handler->display->display_options['fields']['title_1']['field'] = 'title';
-  $handler->display->display_options['fields']['title_1']['relationship'] = 'field_person_fac_single_ref_target_id';
-  $handler->display->display_options['fields']['title_1']['ui_name'] = 'Faculty Name';
-  $handler->display->display_options['fields']['title_1']['label'] = '';
-  $handler->display->display_options['fields']['title_1']['element_label_colon'] = FALSE;
   /* Field: Content: Degree & Year */
   $handler->display->display_options['fields']['field_degree_year']['id'] = 'field_degree_year';
   $handler->display->display_options['fields']['field_degree_year']['table'] = 'field_data_field_degree_year';
@@ -1712,14 +1688,6 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Field: Faculty Name */
-  $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
-  $handler->display->display_options['fields']['title_1']['table'] = 'node';
-  $handler->display->display_options['fields']['title_1']['field'] = 'title';
-  $handler->display->display_options['fields']['title_1']['relationship'] = 'field_person_fac_single_ref_target_id';
-  $handler->display->display_options['fields']['title_1']['ui_name'] = 'Faculty Name';
-  $handler->display->display_options['fields']['title_1']['label'] = '';
-  $handler->display->display_options['fields']['title_1']['element_label_colon'] = FALSE;
   /* Field: Content: Degree & Year */
   $handler->display->display_options['fields']['field_degree_year']['id'] = 'field_degree_year';
   $handler->display->display_options['fields']['field_degree_year']['table'] = 'field_data_field_degree_year';

@@ -195,3 +195,14 @@ function gsb_feature_voices_display_views_pre_render(&$view) {
       }
   }
 }
+
+function gsb_feature_voices_display_ds_views_row_render_entity_alter(&$content, &$context) {
+  
+  $view = &$context['view'];
+  if($view->name == 'gsb_voices_listing' && $view->current_display == 'panel_pane_1') {
+    if(!empty($content['field_quote'][0]['#markup'])) {
+     $content['field_quote'][0]['#markup'] = '<div class="text-content '.$content['field_slideshow_style']['#items'][0]['value'].'">'.$content['field_quote'][0]['#markup'].'</div>';
+    }
+    $content['field_slideshow_style'][0]['#markup'] = "";
+  }
+}

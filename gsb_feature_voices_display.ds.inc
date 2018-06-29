@@ -17,6 +17,18 @@ function gsb_feature_voices_display_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'voices';
   $ds_fieldsetting->view_mode = 'teaser';
   $ds_fieldsetting->settings = array(
+    'title' => array(
+      'weight' => '2',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'link' => '1',
+        'wrapper' => '',
+        'class' => '',
+        'ft' => array(),
+        'conditions' => array(),
+      ),
+    ),
     'field_degree_year' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -24,20 +36,6 @@ function gsb_feature_voices_display_ds_field_settings_info() {
           'fi' => TRUE,
           'fi-el' => 'div',
           'fi-cl' => 'field-name-field-degree-year',
-          'fi-at' => '',
-          'fi-def-at' => FALSE,
-          'fi-odd-even' => FALSE,
-          'fi-first-last' => FALSE,
-        ),
-      ),
-    ),
-    'field_full_name' => array(
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'fi' => TRUE,
-          'fi-el' => 'div',
-          'fi-cl' => 'field-name-field-full-name',
           'fi-at' => '',
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
@@ -69,17 +67,17 @@ function gsb_feature_voices_display_ds_layout_settings_info() {
       'ds_content' => array(
         0 => 'field_image_single_public',
         1 => 'field_quote',
-        2 => 'field_person_fac_single_ref',
-        3 => 'field_full_name',
-        4 => 'field_degree_year',
+        2 => 'title',
+        3 => 'field_degree_year',
+        4 => 'field_slideshow_style',
       ),
     ),
     'fields' => array(
       'field_image_single_public' => 'ds_content',
       'field_quote' => 'ds_content',
-      'field_person_fac_single_ref' => 'ds_content',
-      'field_full_name' => 'ds_content',
+      'title' => 'ds_content',
       'field_degree_year' => 'ds_content',
+      'field_slideshow_style' => 'ds_content',
     ),
     'classes' => array(),
     'wrappers' => array(

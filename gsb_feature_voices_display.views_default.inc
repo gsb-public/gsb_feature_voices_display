@@ -1639,11 +1639,9 @@ function gsb_feature_voices_display_views_default_views() {
   /* Display: Voices All List with CTA */
   $handler = $view->new_display('panel_pane', 'Voices All List with CTA', 'all_voices_list_panel_pane');
   $handler->display->display_options['defaults']['pager'] = FALSE;
-  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '4';
   $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['pager']['options']['id'] = '0';
-  $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Entity Reference: Referenced Entity */
   $handler->display->display_options['relationships']['field_person_fac_single_ref_target_id']['id'] = 'field_person_fac_single_ref_target_id';
@@ -1674,6 +1672,7 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['field_quote']['label'] = '';
   $handler->display->display_options['fields']['field_quote']['alter']['max_length'] = '300';
   $handler->display->display_options['fields']['field_quote']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['field_quote']['alter']['html'] = TRUE;
   $handler->display->display_options['fields']['field_quote']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_quote']['settings'] = array(
     'conditions' => array(

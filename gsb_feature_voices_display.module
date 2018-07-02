@@ -81,13 +81,13 @@ function gsb_feature_voices_display_form_views_content_views_panes_content_type_
         '#default_value' => !empty($conf['cta_url']) ? $conf['cta_url'] : '',
       );
       $form['override_title']['#weight'] = -100;
-       /*$form['overlay_color'] = array(
+      $form['overlay_color'] = array(
         '#title' => t('Overlay color'),
         '#type' => 'select',
         '#options' => array('voices-bg-grey' => 'Grey' , 'voices-bg-white' => 'White'),
         '#weight' => -98,
         '#default_value' => !empty($conf['overlay_color']) ? $conf['overlay_color'] : '',
-      );*/
+      );
       $form['exposed']['#weight'] = -95;
       $form['comments']['#access'] = FALSE;
       $form['links']['#access'] = FALSE;
@@ -128,6 +128,8 @@ function gsb_feature_voices_display_form_submit($form, &$form_state) {
     $form_state['conf']['filter_by_industry'] = $form_state['values']['exposed']['filter_by_industry'];
     $form_state['conf']['filter_by_region'] = $form_state['values']['exposed']['filter_by_region'];
   }
+  if($form_state['subtype_name'] == 'voices_filters-all_voices_list_panel_pane')
+  $form_state['conf']['overlay_color'] = $form_state['values']['overlay_color'];
 }
 
 /**
@@ -170,38 +172,42 @@ function gsb_feature_voices_display_panels_pane_content_alter($content, $pane, $
     }
     if($content && $content->subtype == 'voices_filters-all_voices_list_panel_pane')
     {
-       //$content->title_heading = 'div';
-       //$content->title = '<h2>' . $content->title . '</h2>';
+       $content->title_heading = 'div';
+       $content->title = '<h2>' . $content->title . '</h2>';
        if (!empty($pane->configuration['cta_title'])) {
           $url_parts = drupal_parse_url($pane->configuration['cta_url']);
           $url_parts['html'] = TRUE;
           $content->content['#markup'] .= '<div class="voices_display_all_list_cta">' . l($pane->configuration['cta_title'], $url_parts['path'], $url_parts) . '</div>';
        }
-       /*if (!empty($pane->configuration['overlay_color'])) {
+       if (!empty($pane->configuration['overlay_color'])) {
          $content->css_class = $pane->configuration['overlay_color'];
-       }*/
+       }
     }
 }
 
 function gsb_feature_voices_display_views_pre_render(&$view) {
   if ($view->current_display == 'all_voices_list_panel_pane' || $view->current_display == 'voices_list_cta_panel_pane' || $view->current_display == 'voices_filters_pane' || $view->current_display == 'voices_single_teaser_pane' ) {
-      foreach($view->result as $row)
-      {
-        if(!empty($row->field_field_quote[0]))
-        {
-          $row->field_field_quote[0]['rendered']['#markup'] = '<div class="text-content '.$row->field_field_slideshow_style[0]['raw']['value'].'">'.$row->field_field_quote[0]['rendered']['#markup'].'</div>';
-          // $row->field_field_slideshow_style[0]['rendered']['#markup'] = '<div class="text-content '.$row->field_field_slideshow_style[0]['raw']['value'].'"></div>';
+      foreach($view->result as $row) {
+        if (!empty($row->field_field_quote[0]['rendered']['#markup'])) {
+          $markup = trim($row->field_field_quote[0]['raw']['value']);
+          $row->field_field_quote[0]['rendered']['#markup'] = '<div class="'.$row->field_field_slideshow_style[0]['raw']['value'].'">'.$markup.'</div>';
+          // $row->field_field_quote[0]['rendered']['#prefix'] = '<div class="'.$row->field_field_slideshow_style[0]['raw']['value'].'">';
+          // $row->field_field_quote[0]['rendered']['#suffix'] = '</div>';
+           // $row->field_field_slideshow_style[0]['rendered']['#markup'] = '<div class="text-content '.$row->field_field_slideshow_style[0]['raw']['value'].'"></div>';
+        }
+        if ($row->_field_data['nid']['entity']->field_person_type['und'][0]['tid'] != '42776') {
+            $row->field_field_endowed_title_appointment[0]['rendered']['#element']['title'] = '';
+
         }
       }
   }
 }
 
 function gsb_feature_voices_display_ds_views_row_render_entity_alter(&$content, &$context) {
-  
   $view = &$context['view'];
-  if($view->name == 'gsb_voices_listing' && $view->current_display == 'panel_pane_1') {
-    if(!empty($content['field_quote'][0]['#markup'])) {
-     $content['field_quote'][0]['#markup'] = '<div class="text-content '.$content['field_slideshow_style']['#items'][0]['value'].'">'.$content['field_quote'][0]['#markup'].'</div>';
+  if ($view->name == 'gsb_voices_listing' && $view->current_display == 'panel_pane_1') {
+    if (!empty($content['field_quote'][0]['#markup'])) {
+      $content['field_quote'][0]['#markup'] = '<div class="text-content '.$content['field_slideshow_style']['#items'][0]['value'].'">'.$content['field_quote'][0]['#markup'].'</div>';
     }
     $content['field_slideshow_style'][0]['#markup'] = "";
   }

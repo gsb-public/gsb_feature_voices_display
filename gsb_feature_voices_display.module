@@ -191,13 +191,16 @@ function gsb_feature_voices_display_views_pre_render(&$view) {
         if (!empty($row->field_field_quote[0]['rendered']['#markup'])) {
           $markup = trim($row->field_field_quote[0]['raw']['value']);
           $row->field_field_quote[0]['rendered']['#markup'] = '<div class="'.$row->field_field_slideshow_style[0]['raw']['value'].'">'.$markup.'</div>';
-          // $row->field_field_quote[0]['rendered']['#prefix'] = '<div class="'.$row->field_field_slideshow_style[0]['raw']['value'].'">';
-          // $row->field_field_quote[0]['rendered']['#suffix'] = '</div>';
-           // $row->field_field_slideshow_style[0]['rendered']['#markup'] = '<div class="text-content '.$row->field_field_slideshow_style[0]['raw']['value'].'"></div>';
         }
         if ($row->_field_data['nid']['entity']->field_person_type['und'][0]['tid'] != '42776') {
             $row->field_field_endowed_title_appointment[0]['rendered']['#element']['title'] = '';
 
+        }
+        else {
+          if (!empty($row->field_field_degree_year[0]['rendered']['#markup'])) {
+            $row->field_field_degree_year[0]['rendered']['#markup'] = '';
+  
+          }
         }
       }
   }

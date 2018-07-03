@@ -721,7 +721,7 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['field_degree_year']['settings'] = array(
     'conditions' => array(
       0 => array(
-        'condition' => '',
+        'condition' => 'hide_if_empty',
       ),
     ),
   );
@@ -737,7 +737,7 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['field_endowed_title_appointment']['settings'] = array(
     'conditions' => array(
       0 => array(
-        'condition' => '',
+        'condition' => 'hide_if_empty',
       ),
     ),
   );
@@ -1074,7 +1074,7 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['field_degree_year']['settings'] = array(
     'conditions' => array(
       0 => array(
-        'condition' => '',
+        'condition' => 'hide_if_empty',
       ),
     ),
   );
@@ -1091,7 +1091,7 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['field_endowed_title_appointment']['settings'] = array(
     'conditions' => array(
       0 => array(
-        'condition' => '',
+        'condition' => 'hide_if_empty',
       ),
     ),
   );
@@ -1582,7 +1582,7 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['field_degree_year']['settings'] = array(
     'conditions' => array(
       0 => array(
-        'condition' => '',
+        'condition' => 'hide_if_empty',
       ),
     ),
   );
@@ -1594,10 +1594,14 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['field_endowed_title_appointment']['label'] = '';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_endowed_title_appointment']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_endowed_title_appointment']['type'] = 'link_title_plain';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['settings'] = array(
     'conditions' => array(
       0 => array(
-        'condition' => '',
+        'condition' => 'hide_if_empty',
+        'configuration' => array(
+          'target' => 'fieldable_panels_pane',
+        ),
       ),
     ),
   );
@@ -1696,7 +1700,10 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['field_degree_year']['settings'] = array(
     'conditions' => array(
       0 => array(
-        'condition' => '',
+        'condition' => 'hide_if_empty',
+        'configuration' => array(
+          'target' => 'fieldable_panels_pane',
+        ),
       ),
     ),
   );
@@ -1713,7 +1720,7 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['field_endowed_title_appointment']['settings'] = array(
     'conditions' => array(
       0 => array(
-        'condition' => '',
+        'condition' => 'hide_if_empty',
       ),
     ),
   );

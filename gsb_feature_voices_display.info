@@ -3,6 +3,7 @@ description = GSB Feature Voices Display module for various list view
 core = 7.x
 package = GSB
 version = 7.x-6.56
+project = gsb_feature_voices_display
 dependencies[] = better_exposed_filters
 dependencies[] = ctools
 dependencies[] = ds

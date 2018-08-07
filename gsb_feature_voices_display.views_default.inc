@@ -352,7 +352,7 @@ function gsb_feature_voices_display_views_default_views() {
       ),
     ),
   );
-  /* Field: : field_endowed_title_appointment */
+  /* Field: Content: Endowed Title OR Appointment */
   $handler->display->display_options['fields']['field_endowed_title_appointment']['id'] = 'field_endowed_title_appointment';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['table'] = 'field_data_field_endowed_title_appointment';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['field'] = 'field_endowed_title_appointment';
@@ -361,21 +361,6 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['field_endowed_title_appointment']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_endowed_title_appointment']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['settings'] = array(
-    'conditions' => array(
-      0 => array(
-        'condition' => '',
-      ),
-    ),
-  );
-  /* Field: Background Color */
-  $handler->display->display_options['fields']['field_slideshow_style']['id'] = 'field_slideshow_style';
-  $handler->display->display_options['fields']['field_slideshow_style']['table'] = 'field_data_field_slideshow_style';
-  $handler->display->display_options['fields']['field_slideshow_style']['field'] = 'field_slideshow_style';
-  $handler->display->display_options['fields']['field_slideshow_style']['ui_name'] = 'Background Color';
-  $handler->display->display_options['fields']['field_slideshow_style']['label'] = '';
-  $handler->display->display_options['fields']['field_slideshow_style']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_slideshow_style']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_slideshow_style']['settings'] = array(
     'conditions' => array(
       0 => array(
         'condition' => '',
@@ -724,7 +709,7 @@ function gsb_feature_voices_display_views_default_views() {
       ),
     ),
   );
-  /* Field: : field_endowed_title_appointment */
+  /* Field: Content: Endowed Title OR Appointment */
   $handler->display->display_options['fields']['field_endowed_title_appointment']['id'] = 'field_endowed_title_appointment';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['table'] = 'field_data_field_endowed_title_appointment';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['field'] = 'field_endowed_title_appointment';
@@ -740,15 +725,14 @@ function gsb_feature_voices_display_views_default_views() {
       ),
     ),
   );
-  /* Field: Background Color */
-  $handler->display->display_options['fields']['field_slideshow_style']['id'] = 'field_slideshow_style';
-  $handler->display->display_options['fields']['field_slideshow_style']['table'] = 'field_data_field_slideshow_style';
-  $handler->display->display_options['fields']['field_slideshow_style']['field'] = 'field_slideshow_style';
-  $handler->display->display_options['fields']['field_slideshow_style']['ui_name'] = 'Background Color';
-  $handler->display->display_options['fields']['field_slideshow_style']['label'] = '';
-  $handler->display->display_options['fields']['field_slideshow_style']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_slideshow_style']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_slideshow_style']['settings'] = array(
+  /* Field: Content: Background Color */
+  $handler->display->display_options['fields']['field_background_color']['id'] = 'field_background_color';
+  $handler->display->display_options['fields']['field_background_color']['table'] = 'field_data_field_background_color';
+  $handler->display->display_options['fields']['field_background_color']['field'] = 'field_background_color';
+  $handler->display->display_options['fields']['field_background_color']['label'] = '';
+  $handler->display->display_options['fields']['field_background_color']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_background_color']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_background_color']['settings'] = array(
     'conditions' => array(
       0 => array(
         'condition' => '',
@@ -1015,11 +999,9 @@ function gsb_feature_voices_display_views_default_views() {
   /* Display: Voices List with CTA */
   $handler = $view->new_display('panel_pane', 'Voices List with CTA', 'voices_list_cta_panel_pane');
   $handler->display->display_options['defaults']['pager'] = FALSE;
-  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['pager']['options']['id'] = '0';
-  $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Entity Reference: Referenced Entity */
   $handler->display->display_options['relationships']['field_person_fac_single_ref_target_id']['id'] = 'field_person_fac_single_ref_target_id';
@@ -1095,15 +1077,14 @@ function gsb_feature_voices_display_views_default_views() {
       ),
     ),
   );
-  /* Field: Background Color */
-  $handler->display->display_options['fields']['field_slideshow_style']['id'] = 'field_slideshow_style';
-  $handler->display->display_options['fields']['field_slideshow_style']['table'] = 'field_data_field_slideshow_style';
-  $handler->display->display_options['fields']['field_slideshow_style']['field'] = 'field_slideshow_style';
-  $handler->display->display_options['fields']['field_slideshow_style']['ui_name'] = 'Background Color';
-  $handler->display->display_options['fields']['field_slideshow_style']['label'] = '';
-  $handler->display->display_options['fields']['field_slideshow_style']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_slideshow_style']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_slideshow_style']['settings'] = array(
+  /* Field: Content: Background Color */
+  $handler->display->display_options['fields']['field_background_color']['id'] = 'field_background_color';
+  $handler->display->display_options['fields']['field_background_color']['table'] = 'field_data_field_background_color';
+  $handler->display->display_options['fields']['field_background_color']['field'] = 'field_background_color';
+  $handler->display->display_options['fields']['field_background_color']['label'] = '';
+  $handler->display->display_options['fields']['field_background_color']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_background_color']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_background_color']['settings'] = array(
     'conditions' => array(
       0 => array(
         'condition' => '',
@@ -1589,7 +1570,7 @@ function gsb_feature_voices_display_views_default_views() {
       ),
     ),
   );
-  /* Field: : field_endowed_title_appointment */
+  /* Field: Content: Endowed Title OR Appointment */
   $handler->display->display_options['fields']['field_endowed_title_appointment']['id'] = 'field_endowed_title_appointment';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['table'] = 'field_data_field_endowed_title_appointment';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['field'] = 'field_endowed_title_appointment';
@@ -1608,15 +1589,14 @@ function gsb_feature_voices_display_views_default_views() {
       ),
     ),
   );
-  /* Field: Background Color */
-  $handler->display->display_options['fields']['field_slideshow_style']['id'] = 'field_slideshow_style';
-  $handler->display->display_options['fields']['field_slideshow_style']['table'] = 'field_data_field_slideshow_style';
-  $handler->display->display_options['fields']['field_slideshow_style']['field'] = 'field_slideshow_style';
-  $handler->display->display_options['fields']['field_slideshow_style']['ui_name'] = 'Background Color';
-  $handler->display->display_options['fields']['field_slideshow_style']['label'] = '';
-  $handler->display->display_options['fields']['field_slideshow_style']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_slideshow_style']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_slideshow_style']['settings'] = array(
+  /* Field: Content: Background Color */
+  $handler->display->display_options['fields']['field_background_color']['id'] = 'field_background_color';
+  $handler->display->display_options['fields']['field_background_color']['table'] = 'field_data_field_background_color';
+  $handler->display->display_options['fields']['field_background_color']['field'] = 'field_background_color';
+  $handler->display->display_options['fields']['field_background_color']['label'] = '';
+  $handler->display->display_options['fields']['field_background_color']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_background_color']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_background_color']['settings'] = array(
     'conditions' => array(
       0 => array(
         'condition' => '',
@@ -1727,15 +1707,14 @@ function gsb_feature_voices_display_views_default_views() {
       ),
     ),
   );
-  /* Field: Background Color */
-  $handler->display->display_options['fields']['field_slideshow_style']['id'] = 'field_slideshow_style';
-  $handler->display->display_options['fields']['field_slideshow_style']['table'] = 'field_data_field_slideshow_style';
-  $handler->display->display_options['fields']['field_slideshow_style']['field'] = 'field_slideshow_style';
-  $handler->display->display_options['fields']['field_slideshow_style']['ui_name'] = 'Background Color';
-  $handler->display->display_options['fields']['field_slideshow_style']['label'] = '';
-  $handler->display->display_options['fields']['field_slideshow_style']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_slideshow_style']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_slideshow_style']['settings'] = array(
+  /* Field: Content: Background Color */
+  $handler->display->display_options['fields']['field_background_color']['id'] = 'field_background_color';
+  $handler->display->display_options['fields']['field_background_color']['table'] = 'field_data_field_background_color';
+  $handler->display->display_options['fields']['field_background_color']['field'] = 'field_background_color';
+  $handler->display->display_options['fields']['field_background_color']['label'] = '';
+  $handler->display->display_options['fields']['field_background_color']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_background_color']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_background_color']['settings'] = array(
     'conditions' => array(
       0 => array(
         'condition' => '',

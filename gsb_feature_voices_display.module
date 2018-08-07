@@ -190,7 +190,7 @@ function gsb_feature_voices_display_views_pre_render(&$view) {
       foreach($view->result as $row) {
         if (!empty($row->field_field_quote[0]['rendered']['#markup'])) {
           $markup = trim($row->field_field_quote[0]['raw']['value']);
-          $row->field_field_quote[0]['rendered']['#markup'] = '<div class="'.$row->field_field_slideshow_style[0]['raw']['value'].'">'.$markup.'</div>';
+          $row->field_field_quote[0]['rendered']['#markup'] = '<div class="'.$row->field_field_background_color[0]['raw']['value'].'">'.$markup.'</div>';
         }
         if ($row->_field_data['nid']['entity']->field_person_type['und'][0]['tid'] != '42776') {
             $row->field_field_endowed_title_appointment[0]['rendered']['#element']['title'] = '';

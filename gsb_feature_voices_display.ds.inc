@@ -69,7 +69,7 @@ function gsb_feature_voices_display_ds_layout_settings_info() {
         1 => 'field_quote',
         2 => 'title',
         3 => 'field_degree_year',
-        4 => 'field_slideshow_style',
+        4 => 'field_background_color',
       ),
     ),
     'fields' => array(
@@ -77,7 +77,7 @@ function gsb_feature_voices_display_ds_layout_settings_info() {
       'field_quote' => 'ds_content',
       'title' => 'ds_content',
       'field_degree_year' => 'ds_content',
-      'field_slideshow_style' => 'ds_content',
+      'field_background_color' => 'ds_content',
     ),
     'classes' => array(),
     'wrappers' => array(

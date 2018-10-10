@@ -190,6 +190,9 @@ function gsb_feature_voices_display_views_pre_render(&$view) {
       foreach($view->result as $row) {
         if (!empty($row->field_field_quote[0]['rendered']['#markup'])) {
           $markup = trim($row->field_field_quote[0]['raw']['value']);
+          if(strlen($markup) > 150){
+            $markup = substr($markup,0,150)."...";
+          }
           $row->field_field_quote[0]['rendered']['#markup'] = '<div class="'.$row->field_field_background_color[0]['raw']['value'].'">'.$markup.'</div>';
         }
         if ($row->_field_data['nid']['entity']->field_person_type['und'][0]['tid'] != '42776') {

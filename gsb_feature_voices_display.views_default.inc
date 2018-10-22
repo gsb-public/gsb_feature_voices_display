@@ -359,6 +359,7 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['field_endowed_title_appointment']['relationship'] = 'field_person_fac_single_ref_target_id';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['label'] = '';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_endowed_title_appointment']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_endowed_title_appointment']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['settings'] = array(
     'conditions' => array(
@@ -791,12 +792,16 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['field_endowed_title_appointment']['relationship'] = 'field_person_fac_single_ref_target_id';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['label'] = '';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_endowed_title_appointment']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_endowed_title_appointment']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['type'] = 'link_title_plain';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['settings'] = array(
     'conditions' => array(
       0 => array(
         'condition' => 'hide_if_empty',
+        'configuration' => array(
+          'target' => 'fieldable_panels_pane',
+        ),
       ),
     ),
   );
@@ -1143,12 +1148,16 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['field_endowed_title_appointment']['ui_name'] = 'Faculty Endowed Title';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['label'] = '';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_endowed_title_appointment']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_endowed_title_appointment']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['type'] = 'link_title_plain';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['settings'] = array(
     'conditions' => array(
       0 => array(
         'condition' => 'hide_if_empty',
+        'configuration' => array(
+          'target' => 'fieldable_panels_pane',
+        ),
       ),
     ),
   );
@@ -1652,6 +1661,7 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['field_endowed_title_appointment']['relationship'] = 'field_person_fac_single_ref_target_id';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['label'] = '';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_endowed_title_appointment']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_endowed_title_appointment']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['type'] = 'link_title_plain';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['settings'] = array(
@@ -1880,12 +1890,16 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['field_endowed_title_appointment']['ui_name'] = 'Faculty Endowed Title';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['label'] = '';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_endowed_title_appointment']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_endowed_title_appointment']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['type'] = 'link_title_plain';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['settings'] = array(
     'conditions' => array(
       0 => array(
         'condition' => 'hide_if_empty',
+        'configuration' => array(
+          'target' => 'fieldable_panels_pane',
+        ),
       ),
     ),
   );

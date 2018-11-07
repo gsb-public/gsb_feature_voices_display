@@ -916,6 +916,7 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['filters']['field_industry_tid']['field'] = 'field_industry_tid';
   $handler->display->display_options['filters']['field_industry_tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_industry_tid']['expose']['operator_id'] = 'field_industry_tid_op';
+  $handler->display->display_options['filters']['field_industry_tid']['expose']['label'] = 'Industry';
   $handler->display->display_options['filters']['field_industry_tid']['expose']['operator'] = 'field_industry_tid_op';
   $handler->display->display_options['filters']['field_industry_tid']['expose']['identifier'] = 'field_industry_tid';
   $handler->display->display_options['filters']['field_industry_tid']['expose']['remember_roles'] = array(
@@ -988,6 +989,7 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['filters']['field_region_of_interest_tid']['field'] = 'field_region_of_interest_tid';
   $handler->display->display_options['filters']['field_region_of_interest_tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_region_of_interest_tid']['expose']['operator_id'] = 'field_region_of_interest_tid_op';
+  $handler->display->display_options['filters']['field_region_of_interest_tid']['expose']['label'] = 'Region';
   $handler->display->display_options['filters']['field_region_of_interest_tid']['expose']['operator'] = 'field_region_of_interest_tid_op';
   $handler->display->display_options['filters']['field_region_of_interest_tid']['expose']['identifier'] = 'field_region_of_interest_tid';
   $handler->display->display_options['filters']['field_region_of_interest_tid']['expose']['remember_roles'] = array(

@@ -1612,7 +1612,7 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['field_image_single_public']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_image_single_public']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_image_single_public']['settings'] = array(
-    'image_style' => '270x270',
+    'image_style' => '566x_variable',
     'image_link' => '',
     'conditions' => array(
       0 => array(

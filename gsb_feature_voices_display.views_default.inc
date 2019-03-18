@@ -1636,7 +1636,6 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['field_quote']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_quote']['alter']['max_length'] = '300';
   $handler->display->display_options['fields']['field_quote']['alter']['trim'] = TRUE;
-  $handler->display->display_options['fields']['field_quote']['alter']['html'] = TRUE;
   $handler->display->display_options['fields']['field_quote']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_quote']['settings'] = array(
     'conditions' => array(
@@ -1661,6 +1660,8 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['field_degree_year']['field'] = 'field_degree_year';
   $handler->display->display_options['fields']['field_degree_year']['label'] = '';
   $handler->display->display_options['fields']['field_degree_year']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_degree_year']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_degree_year']['alter']['text'] = '<div class="views-field-field-degree-year">[field_degree_year]</div>';
   $handler->display->display_options['fields']['field_degree_year']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_degree_year']['settings'] = array(
     'conditions' => array(
@@ -1679,6 +1680,8 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['field_endowed_title_appointment']['relationship'] = 'field_person_fac_single_ref_target_id';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['label'] = '';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_endowed_title_appointment']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_endowed_title_appointment']['alter']['text'] = '<div class="views-field-field-endowed-title-appointment">[field_endowed_title_appointment-title]</div>';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_endowed_title_appointment']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_endowed_title_appointment']['click_sort_column'] = 'url';
@@ -1700,6 +1703,7 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['field_background_color']['label'] = '';
   $handler->display->display_options['fields']['field_background_color']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_background_color']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_background_color']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_background_color']['settings'] = array(
     'conditions' => array(
       0 => array(
@@ -1712,12 +1716,12 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a href="[path]" class="[field_background_color]">
-<span>[field_image_single_public]</span>
-<span>[field_quote]</span>
-<span>[title]</span>
-<span>[field_degree_year]</span>
-<span>[field_endowed_title_appointment]</span>
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a href="[path]" class="bg-[field_background_color]">
+<div class="views-field-field-image-single-public">[field_image_single_public]</div>
+<div class="views-field-field-quote">[field_quote]</div>
+<div class="views-field-title">[title]</div>
+[field_degree_year]
+[field_endowed_title_appointment]
 </a>
 ';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;

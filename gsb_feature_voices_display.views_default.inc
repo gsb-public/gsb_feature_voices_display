@@ -1604,6 +1604,13 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['pager']['options']['items_per_page'] = '1';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Path */
+  $handler->display->display_options['fields']['path']['id'] = 'path';
+  $handler->display->display_options['fields']['path']['table'] = 'node';
+  $handler->display->display_options['fields']['path']['field'] = 'path';
+  $handler->display->display_options['fields']['path']['label'] = '';
+  $handler->display->display_options['fields']['path']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
   /* Field: Field: Photo */
   $handler->display->display_options['fields']['field_image_single_public']['id'] = 'field_image_single_public';
   $handler->display->display_options['fields']['field_image_single_public']['table'] = 'field_data_field_image_single_public';
@@ -1705,7 +1712,7 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a href="#" class="[field_background_color]">
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a href="[path]" class="[field_background_color]">
 <span>[field_image_single_public]</span>
 <span>[field_quote]</span>
 <span>[title]</span>

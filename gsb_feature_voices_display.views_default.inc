@@ -737,10 +737,11 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['field_image_single_public']['table'] = 'field_data_field_image_single_public';
   $handler->display->display_options['fields']['field_image_single_public']['field'] = 'field_image_single_public';
   $handler->display->display_options['fields']['field_image_single_public']['label'] = '';
+  $handler->display->display_options['fields']['field_image_single_public']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_image_single_public']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_image_single_public']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_image_single_public']['settings'] = array(
-    'image_style' => '270x270',
+    'image_style' => '566x_variable',
     'image_link' => '',
     'conditions' => array(
       0 => array(
@@ -753,6 +754,7 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['field_quote']['table'] = 'field_data_field_quote';
   $handler->display->display_options['fields']['field_quote']['field'] = 'field_quote';
   $handler->display->display_options['fields']['field_quote']['label'] = '';
+  $handler->display->display_options['fields']['field_quote']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_quote']['alter']['max_length'] = '300';
   $handler->display->display_options['fields']['field_quote']['alter']['trim'] = TRUE;
   $handler->display->display_options['fields']['field_quote']['alter']['html'] = TRUE;
@@ -769,19 +771,26 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
   /* Field: Content: Degree & Year */
   $handler->display->display_options['fields']['field_degree_year']['id'] = 'field_degree_year';
   $handler->display->display_options['fields']['field_degree_year']['table'] = 'field_data_field_degree_year';
   $handler->display->display_options['fields']['field_degree_year']['field'] = 'field_degree_year';
   $handler->display->display_options['fields']['field_degree_year']['label'] = '';
+  $handler->display->display_options['fields']['field_degree_year']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_degree_year']['alter']['text'] = '<div class="views-field-field-degree-year">[field_degree_year]</div>';
   $handler->display->display_options['fields']['field_degree_year']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_degree_year']['settings'] = array(
     'conditions' => array(
       0 => array(
         'condition' => 'hide_if_empty',
+        'configuration' => array(
+          'target' => 'fieldable_panels_pane',
+        ),
       ),
     ),
   );
@@ -791,6 +800,9 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['field_endowed_title_appointment']['field'] = 'field_endowed_title_appointment';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['relationship'] = 'field_person_fac_single_ref_target_id';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['label'] = '';
+  $handler->display->display_options['fields']['field_endowed_title_appointment']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_endowed_title_appointment']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_endowed_title_appointment']['alter']['text'] = '<div class="views-field-field-endowed-title-appointment">[field_endowed_title_appointment-title]</div>';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_endowed_title_appointment']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_endowed_title_appointment']['click_sort_column'] = 'url';
@@ -812,6 +824,7 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['field_background_color']['label'] = '';
   $handler->display->display_options['fields']['field_background_color']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_background_color']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_background_color']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_background_color']['settings'] = array(
     'conditions' => array(
       0 => array(
@@ -819,6 +832,26 @@ function gsb_feature_voices_display_views_default_views() {
       ),
     ),
   );
+  /* Field: Content: Path */
+  $handler->display->display_options['fields']['path']['id'] = 'path';
+  $handler->display->display_options['fields']['path']['table'] = 'node';
+  $handler->display->display_options['fields']['path']['field'] = 'path';
+  $handler->display->display_options['fields']['path']['label'] = '';
+  $handler->display->display_options['fields']['path']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a href="[path]" class="bg-[field_background_color]">
+<div class="views-field-field-image-single-public">[field_image_single_public]</div>
+<div class="views-field-field-quote">[field_quote]</div>
+<div class="views-field-title">[title]</div>
+[field_degree_year]
+[field_endowed_title_appointment]
+</a>';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -1091,15 +1124,23 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['relationships']['field_person_fac_single_ref_target_id']['field'] = 'field_person_fac_single_ref_target_id';
   $handler->display->display_options['relationships']['field_person_fac_single_ref_target_id']['label'] = 'faculty relation';
   $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Path */
+  $handler->display->display_options['fields']['path']['id'] = 'path';
+  $handler->display->display_options['fields']['path']['table'] = 'node';
+  $handler->display->display_options['fields']['path']['field'] = 'path';
+  $handler->display->display_options['fields']['path']['label'] = '';
+  $handler->display->display_options['fields']['path']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
   /* Field: Field: Photo */
   $handler->display->display_options['fields']['field_image_single_public']['id'] = 'field_image_single_public';
   $handler->display->display_options['fields']['field_image_single_public']['table'] = 'field_data_field_image_single_public';
   $handler->display->display_options['fields']['field_image_single_public']['field'] = 'field_image_single_public';
   $handler->display->display_options['fields']['field_image_single_public']['label'] = '';
+  $handler->display->display_options['fields']['field_image_single_public']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_image_single_public']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_image_single_public']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_image_single_public']['settings'] = array(
-    'image_style' => '270x270',
+    'image_style' => '566x_variable',
     'image_link' => '',
     'conditions' => array(
       0 => array(
@@ -1112,6 +1153,7 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['field_quote']['table'] = 'field_data_field_quote';
   $handler->display->display_options['fields']['field_quote']['field'] = 'field_quote';
   $handler->display->display_options['fields']['field_quote']['label'] = '';
+  $handler->display->display_options['fields']['field_quote']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_quote']['alter']['max_length'] = '300';
   $handler->display->display_options['fields']['field_quote']['alter']['trim'] = TRUE;
   $handler->display->display_options['fields']['field_quote']['alter']['html'] = TRUE;
@@ -1128,17 +1170,25 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
   /* Field: Content: Degree & Year */
   $handler->display->display_options['fields']['field_degree_year']['id'] = 'field_degree_year';
   $handler->display->display_options['fields']['field_degree_year']['table'] = 'field_data_field_degree_year';
   $handler->display->display_options['fields']['field_degree_year']['field'] = 'field_degree_year';
   $handler->display->display_options['fields']['field_degree_year']['label'] = '';
+  $handler->display->display_options['fields']['field_degree_year']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_degree_year']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_degree_year']['alter']['text'] = '<div class="views-field-field-degree-year">[field_degree_year]</div>';
   $handler->display->display_options['fields']['field_degree_year']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_degree_year']['settings'] = array(
     'conditions' => array(
       0 => array(
         'condition' => 'hide_if_empty',
+        'configuration' => array(
+          'target' => 'fieldable_panels_pane',
+        ),
       ),
     ),
   );
@@ -1149,6 +1199,9 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['field_endowed_title_appointment']['relationship'] = 'field_person_fac_single_ref_target_id';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['ui_name'] = 'Faculty Endowed Title';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['label'] = '';
+  $handler->display->display_options['fields']['field_endowed_title_appointment']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_endowed_title_appointment']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_endowed_title_appointment']['alter']['text'] = '<div class="views-field-field-endowed-title-appointment">[field_endowed_title_appointment-title]</div>';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_endowed_title_appointment']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_endowed_title_appointment']['click_sort_column'] = 'url';
@@ -1170,6 +1223,7 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['field_background_color']['label'] = '';
   $handler->display->display_options['fields']['field_background_color']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_background_color']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_background_color']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_background_color']['settings'] = array(
     'conditions' => array(
       0 => array(
@@ -1177,6 +1231,19 @@ function gsb_feature_voices_display_views_default_views() {
       ),
     ),
   );
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a href="[path]" class="bg-[field_background_color]">
+<div class="views-field-field-image-single-public">[field_image_single_public]</div>
+<div class="views-field-field-quote">[field_quote]</div>
+<div class="views-field-title">[title]</div>
+[field_degree_year]
+[field_endowed_title_appointment]
+</a>';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -1867,15 +1934,23 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['relationships']['field_person_fac_single_ref_target_id']['field'] = 'field_person_fac_single_ref_target_id';
   $handler->display->display_options['relationships']['field_person_fac_single_ref_target_id']['label'] = 'faculty relation';
   $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Path */
+  $handler->display->display_options['fields']['path']['id'] = 'path';
+  $handler->display->display_options['fields']['path']['table'] = 'node';
+  $handler->display->display_options['fields']['path']['field'] = 'path';
+  $handler->display->display_options['fields']['path']['label'] = '';
+  $handler->display->display_options['fields']['path']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
   /* Field: Field: Photo */
   $handler->display->display_options['fields']['field_image_single_public']['id'] = 'field_image_single_public';
   $handler->display->display_options['fields']['field_image_single_public']['table'] = 'field_data_field_image_single_public';
   $handler->display->display_options['fields']['field_image_single_public']['field'] = 'field_image_single_public';
   $handler->display->display_options['fields']['field_image_single_public']['label'] = '';
+  $handler->display->display_options['fields']['field_image_single_public']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_image_single_public']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_image_single_public']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_image_single_public']['settings'] = array(
-    'image_style' => '270x270',
+    'image_style' => '566x_variable',
     'image_link' => '',
     'conditions' => array(
       0 => array(
@@ -1888,6 +1963,7 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['field_quote']['table'] = 'field_data_field_quote';
   $handler->display->display_options['fields']['field_quote']['field'] = 'field_quote';
   $handler->display->display_options['fields']['field_quote']['label'] = '';
+  $handler->display->display_options['fields']['field_quote']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_quote']['alter']['max_length'] = '300';
   $handler->display->display_options['fields']['field_quote']['alter']['trim'] = TRUE;
   $handler->display->display_options['fields']['field_quote']['alter']['html'] = TRUE;
@@ -1904,12 +1980,17 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
   /* Field: Content: Degree & Year */
   $handler->display->display_options['fields']['field_degree_year']['id'] = 'field_degree_year';
   $handler->display->display_options['fields']['field_degree_year']['table'] = 'field_data_field_degree_year';
   $handler->display->display_options['fields']['field_degree_year']['field'] = 'field_degree_year';
   $handler->display->display_options['fields']['field_degree_year']['label'] = '';
+  $handler->display->display_options['fields']['field_degree_year']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_degree_year']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_degree_year']['alter']['text'] = '<div class="views-field-field-degree-year">[field_degree_year]</div>';
   $handler->display->display_options['fields']['field_degree_year']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_degree_year']['settings'] = array(
     'conditions' => array(
@@ -1928,6 +2009,9 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['field_endowed_title_appointment']['relationship'] = 'field_person_fac_single_ref_target_id';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['ui_name'] = 'Faculty Endowed Title';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['label'] = '';
+  $handler->display->display_options['fields']['field_endowed_title_appointment']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_endowed_title_appointment']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_endowed_title_appointment']['alter']['text'] = '<div class="views-field-field-endowed-title-appointment">[field_endowed_title_appointment-title]</div>';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_endowed_title_appointment']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_endowed_title_appointment']['click_sort_column'] = 'url';
@@ -1949,6 +2033,7 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['field_background_color']['label'] = '';
   $handler->display->display_options['fields']['field_background_color']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_background_color']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_background_color']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_background_color']['settings'] = array(
     'conditions' => array(
       0 => array(
@@ -1956,6 +2041,20 @@ function gsb_feature_voices_display_views_default_views() {
       ),
     ),
   );
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a href="[path]" class="bg-[field_background_color]">
+<div class="views-field-field-image-single-public">[field_image_single_public]</div>
+<div class="views-field-field-quote">[field_quote]</div>
+<div class="views-field-title">[title]</div>
+[field_degree_year]
+[field_endowed_title_appointment]
+</a>
+';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */

@@ -782,6 +782,7 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['field_degree_year']['field'] = 'field_degree_year';
   $handler->display->display_options['fields']['field_degree_year']['label'] = '';
   $handler->display->display_options['fields']['field_degree_year']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_degree_year']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_degree_year']['alter']['text'] = '<div class="views-field-field-degree-year">[field_degree_year]</div>';
   $handler->display->display_options['fields']['field_degree_year']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_degree_year']['settings'] = array(

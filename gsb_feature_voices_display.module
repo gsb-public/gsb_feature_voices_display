@@ -185,30 +185,6 @@ function gsb_feature_voices_display_panels_pane_content_alter($content, $pane, $
     }
 }
 
-function gsb_feature_voices_display_views_pre_render(&$view) {
-  if ($view->current_display == 'all_voices_list_panel_pane' || $view->current_display == 'voices_list_cta_panel_pane' || $view->current_display == 'voices_filters_pane' || $view->current_display == 'voices_single_teaser_pane' ) {
-      foreach($view->result as $row) {
-        if (!empty($row->field_field_quote[0]['rendered']['#markup'])) {
-          $markup = trim($row->field_field_quote[0]['raw']['value']);
-          if(strlen($markup) > 150){
-            $markup = substr($markup,0,150)."...";
-          }
-          $row->field_field_quote[0]['rendered']['#markup'] = '<div class="'.$row->field_field_background_color[0]['raw']['value'].'">'.$markup.'</div>';
-        }
-        if ($row->_field_data['nid']['entity']->field_person_type['und'][0]['tid'] != '42776') {
-            $row->field_field_endowed_title_appointment[0]['rendered']['#element']['title'] = '';
-
-        }
-        else {
-          if (!empty($row->field_field_degree_year[0]['rendered']['#markup'])) {
-            $row->field_field_degree_year[0]['rendered']['#markup'] = '';
-  
-          }
-        }
-      }
-  }
-}
-
 function gsb_feature_voices_display_ds_views_row_render_entity_alter(&$content, &$context) {
   $view = &$context['view'];
   if ($view->name == 'gsb_voices_listing' && $view->current_display == 'panel_pane_1') {

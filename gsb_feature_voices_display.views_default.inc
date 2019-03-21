@@ -118,6 +118,7 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['field_background_color']['label'] = '';
   $handler->display->display_options['fields']['field_background_color']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_background_color']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_background_color']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_background_color']['settings'] = array(
     'conditions' => array(
       0 => array(

@@ -97,7 +97,9 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['field_endowed_title_appointment']['id'] = 'field_endowed_title_appointment';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['table'] = 'field_data_field_endowed_title_appointment';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['field'] = 'field_endowed_title_appointment';
+  $handler->display->display_options['fields']['field_endowed_title_appointment']['relationship'] = 'field_person_fac_single_ref_target_id';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['label'] = '';
+  $handler->display->display_options['fields']['field_endowed_title_appointment']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_endowed_title_appointment']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_endowed_title_appointment']['alter']['text'] = '<div class="views-field-field-endowed-title-appointment">[field_endowed_title_appointment-title]</div>';
   $handler->display->display_options['fields']['field_endowed_title_appointment']['element_label_colon'] = FALSE;

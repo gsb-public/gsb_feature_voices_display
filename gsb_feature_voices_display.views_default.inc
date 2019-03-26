@@ -59,6 +59,8 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['fields']['field_quote']['field'] = 'field_quote';
   $handler->display->display_options['fields']['field_quote']['label'] = '';
   $handler->display->display_options['fields']['field_quote']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_quote']['alter']['max_length'] = '150';
+  $handler->display->display_options['fields']['field_quote']['alter']['trim'] = TRUE;
   $handler->display->display_options['fields']['field_quote']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_quote']['settings'] = array(
     'conditions' => array(

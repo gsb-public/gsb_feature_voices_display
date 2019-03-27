@@ -1694,8 +1694,8 @@ function gsb_feature_voices_display_views_default_views() {
     ),
   );
 
-  /* Display: Voices Single Teaser */
-  $handler = $view->new_display('panel_pane', 'Voices Single Teaser', 'voices_single_teaser_pane');
+  /* Display: Voice */
+  $handler = $view->new_display('panel_pane', 'Voice', 'voices_single_teaser_pane');
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '1';
@@ -1931,7 +1931,7 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['filters']['field_voices_full_name_value']['expose']['autocomplete_raw_suggestion'] = 1;
   $handler->display->display_options['filters']['field_voices_full_name_value']['expose']['autocomplete_raw_dropdown'] = 1;
   $handler->display->display_options['filters']['field_voices_full_name_value']['expose']['autocomplete_dependent'] = 0;
-  $handler->display->display_options['pane_title'] = 'Voices: Single Teaser';
+  $handler->display->display_options['pane_title'] = 'Voice';
   $handler->display->display_options['pane_category']['name'] = 'Customizable Content Lists';
   $handler->display->display_options['pane_category']['weight'] = '0';
   $handler->display->display_options['allow']['use_pager'] = 0;
@@ -1951,8 +1951,8 @@ function gsb_feature_voices_display_views_default_views() {
     ),
   );
 
-  /* Display: Voices All List with CTA */
-  $handler = $view->new_display('panel_pane', 'Voices All List with CTA', 'all_voices_list_panel_pane');
+  /* Display: All Voices Builder */
+  $handler = $view->new_display('panel_pane', 'All Voices Builder', 'all_voices_list_panel_pane');
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '4';
@@ -2176,7 +2176,7 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['filters']['field_person_type_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_person_type_tid']['vocabulary'] = 'person_type';
   $handler->display->display_options['filters']['field_person_type_tid']['error_message'] = FALSE;
-  $handler->display->display_options['pane_title'] = 'Voices: Single Criteria with CTA';
+  $handler->display->display_options['pane_title'] = 'Voices: All Voices Builder';
   $handler->display->display_options['pane_category']['name'] = 'Customizable Content Lists';
   $handler->display->display_options['pane_category']['weight'] = '0';
   $handler->display->display_options['allow']['use_pager'] = 0;

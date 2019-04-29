@@ -57,8 +57,8 @@ function gsb_feature_voices_display_form_views_content_views_panes_content_type_
       );
       $form['#validate'][] = 'gsb_feature_voices_display_form_validate';
       $form['#submit'][]   = 'gsb_feature_voices_display_form_submit';
-      drupal_add_js(drupal_get_path('module', 'gsb_feature_voices_display') . '/js/gsb_feature_voices_list_cta.js');  
-  
+      drupal_add_js(drupal_get_path('module', 'gsb_feature_voices_display') . '/js/gsb_feature_voices_list_cta.js');
+
   }
   if ($form_state['view']->name == 'voices_filters'
     && $form_state['pane']->subtype == 'voices_filters-all_voices_list_panel_pane'  && $form_state['view']->current_display == 'all_voices_list_panel_pane') {
@@ -147,11 +147,11 @@ function gsb_feature_voices_display_form_views_exposed_form_alter(&$form, &$form
       '#default_value' => $form_state['input']['filter_by_region'],
     );
     // Hide the filter display on pane config
-    if (isset($form_state['input']['filter_by_industry']) && ($form_state['input']['filter_by_industry'] == "" 
+    if (isset($form_state['input']['filter_by_industry']) && ($form_state['input']['filter_by_industry'] == ""
       || $form_state['input']['filter_by_industry'] == "0")) {
       $form['field_industry_tid']['#access'] = FALSE;
     }
-    if (isset($form_state['input']['filter_by_region']) && ($form_state['input']['filter_by_region'] == "" 
+    if (isset($form_state['input']['filter_by_region']) && ($form_state['input']['filter_by_region'] == ""
       || $form_state['input']['filter_by_region'] == "0")) {
       $form['field_region_of_interest_tid']['#access'] = FALSE;
     }
@@ -192,5 +192,13 @@ function gsb_feature_voices_display_ds_views_row_render_entity_alter(&$content, 
       $content['field_quote'][0]['#markup'] = '<div class="text-content '.$content['field_slideshow_style']['#items'][0]['value'].'">'.$content['field_quote'][0]['#markup'].'</div>';
     }
     $content['field_slideshow_style'][0]['#markup'] = "";
+  }
+}
+
+function gsb_feature_voices_display_views_pre_render(&$view) {
+  if($view->name == "voices_filters") {
+    if ($view->exposed_data['filter_by_region'] == '0' && $view->exposed_data['filter_by_industry'] == '0') {
+      unset($view->exposed_widgets);
+    }
   }
 }

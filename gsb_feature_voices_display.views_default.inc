@@ -148,11 +148,11 @@ function gsb_feature_voices_display_views_default_views() {
 [field_endowed_title_appointment]
 </a>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Sort criterion: Content: Published */
+  $handler->display->display_options['sorts']['status']['id'] = 'status';
+  $handler->display->display_options['sorts']['status']['table'] = 'node';
+  $handler->display->display_options['sorts']['status']['field'] = 'status';
+  $handler->display->display_options['sorts']['status']['order'] = 'DESC';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -184,11 +184,11 @@ function gsb_feature_voices_display_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Sort criterion: Field: Publication Date (field_date) */
+  $handler->display->display_options['sorts']['field_date_value']['id'] = 'field_date_value';
+  $handler->display->display_options['sorts']['field_date_value']['table'] = 'field_data_field_date';
+  $handler->display->display_options['sorts']['field_date_value']['field'] = 'field_date_value';
+  $handler->display->display_options['sorts']['field_date_value']['order'] = 'DESC';
   $handler->display->display_options['pane_title'] = 'Voices: Homepage Three Across';
   $handler->display->display_options['pane_description'] = 'Homepage latest three voices';
   $handler->display->display_options['pane_category']['name'] = 'Homepage Elements';
@@ -472,11 +472,11 @@ function gsb_feature_voices_display_views_default_views() {
       ),
     ),
   );
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Sort criterion: Field: Publication Date (field_date) */
+  $handler->display->display_options['sorts']['field_date_value']['id'] = 'field_date_value';
+  $handler->display->display_options['sorts']['field_date_value']['table'] = 'field_data_field_date';
+  $handler->display->display_options['sorts']['field_date_value']['field'] = 'field_date_value';
+  $handler->display->display_options['sorts']['field_date_value']['order'] = 'DESC';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
